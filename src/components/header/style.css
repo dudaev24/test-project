@@ -1,0 +1,50 @@
+.header {
+    padding: 0 0;
+    min-height: 650px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: linear-gradient(#4397F3 0%, #FFFFFF 100%);;
+    background-color: #4397F3;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center center;
+
+    color: var(--header-text);
+    text-align: center;
+    
+    overflow: hidden;
+}
+
+.header_wrapper {
+    max-width: 100%;
+}
+
+.header_title {
+    margin-top: auto;
+    font-size: 320px;
+    font-weight: 700;
+    background: linear-gradient(#4397F3 35%, transparent 95%);
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.header_text {
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.header_text p + p {
+    margin-top: 0.5em;
+}
+
+.imag {
+    width: 45%;
+    max-width: 325px;
+    position: absolute;
+    margin-top: 15%;
+
+}
