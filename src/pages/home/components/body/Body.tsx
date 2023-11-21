@@ -1,7 +1,7 @@
 import './style.css';
-import group1 from "../../img/Group1.png"
-import group2 from "../../img/Group2.png"
-import group3 from "../../img/Group3.png"
+import group1 from "../../../../img/Group1.png"
+import group2 from "../../../../img/Group2.png"
+import group3 from "../../../../img/Group3.png"
 
 const Body = () => {
     return <div className="body">

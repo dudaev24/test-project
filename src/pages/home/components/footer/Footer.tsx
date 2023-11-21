@@ -1,11 +1,11 @@
 import "./style.css";
-import logo from '../../img/logo.png';
-import tel from '../../img/tel.png';
-import vk from '../../img/vk.png';
-import wa from '../../img/wa.png';
-import QR from '../../img/QR.png';
-import appstore from '../../img/appstore.png';
-import googleplay from '../../img/googleplay.png';
+import logo from '../../../../img/logo.png';
+import tel from '../../../../img/tel.png';
+import vk from '../../../../img/vk.png';
+import wa from '../../../../img/wa.png';
+import QR from '../../../../img/QR.png';
+import appstore from '../../../../img/appstore.png';
+import googleplay from '../../../../img/googleplay.png';
 
 const Footer = () => {
     return (

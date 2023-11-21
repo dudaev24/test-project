@@ -1,5 +1,5 @@
 import "./style.css"
-import mobimg from "../../img/Group 1332.png"
+import mobimg from "../../../../img/Group 1332.png"
 
 const Header = () => {
     return (
