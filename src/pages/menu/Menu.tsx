@@ -48,7 +48,7 @@ const Menu = () => {
             <div className="navbar_b">
             <div className="nav-menu">
                 {
-                    tags.map((tag : any)  =>  <span  key= {tag.code} onClick={() => setMenu(tag['code'])} className="li_obj">{tag['name']} {menu === tag['code']? <tr/>: <></> }</span> )
+                    tags.map((tag : any)  =>  <span  key= {tag.code} onClick={() => setMenu(tag['code'])} className="li_obj">{tag['name']} {menu === tag['code']? <></>: <></> }</span> )
                 }
             </div>
             </div>

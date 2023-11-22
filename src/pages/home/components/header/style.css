@@ -1,12 +1,12 @@
 .header {
-    padding: 0 0;
+    padding: 2%;
     min-height: 650px;
 
     display: flex;
     justify-content: center;
     align-items: flex-start;
 
-    background: linear-gradient(#4397F3 0%, #FFFFFF 100%);;
+    background: linear-gradient(#4397F3 0%, #FFFFFF 90%);;
     background-color: #4397F3;
     background-repeat: no-repeat;
     background-size: auto;
@@ -20,31 +20,31 @@
 
 .header_wrapper {
     max-width: 100%;
+    padding-top: 5%;
+
 }
 
-.header_title {
-    margin-top: auto;
-    font-size: 320px;
-    font-weight: 700;
-    background: linear-gradient(#4397F3 35%, transparent 95%);
-    -webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
-.header_text {
-    margin-bottom: 40px;
-    font-size: 18px;
-    line-height: 1.33;
-}
-
-.header_text p + p {
-    margin-top: 0.5em;
-}
 
 .imag {
     width: 45%;
     max-width: 325px;
     position: absolute;
-    margin-top: 15%;
+    left: 0;
+    right: 0;
+    top: 20%;
+    margin: 0 auto;
 
+    animation-name: slideUp;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0.1s;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(0px);
+    }
 }
