@@ -7,7 +7,7 @@ const Body = () => {
     return <div className="body">
             <div className='body_wrapper'>
                 <span className='body_text'>Что такое Ретейли ?</span>
-                <div className='main_body'>
+                <div className='main_body hide'>
                     <div className='item-1'>
                         <img src={group1} alt="" />
                         <span style={{color: 'blue'}}>Более 400 точек </span>

@@ -39,7 +39,7 @@ export function Login () {
                         <input onChange={(e) => setPass(e.target.value)} type="password" placeholder="Пароль" id="pass" value={pass} required/>
                         <button className="sub_button" onClick={handleSubmit}>Войти</button>
                         <a href="/">Забыли пароль?</a>
-                        <Link to="/" className="reg_but">
+                        <Link to="/">
                         <button className="reg_but">Зарегистрироваться</button>
                         </Link>
                     </form>

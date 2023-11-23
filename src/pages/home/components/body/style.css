@@ -1,5 +1,5 @@
 .body {
-    margin-top: 10%;
+    margin-top: 4vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,11 +28,7 @@
     grid-template-rows: 40%;
     grid-gap: 2%;
     align-items: center;
-
-    animation-name: slideUp;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
-    animation-delay: 1s;
+    transition: all .5s;
 
 }
 
@@ -79,11 +75,3 @@
     
 }
 
-@keyframes slideUp {
-    0% {
-        transform: translateY(100px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}

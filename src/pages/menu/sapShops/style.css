@@ -1,0 +1,80 @@
+.shoplist {
+    display: flex;
+    flex-direction: row;
+}
+
+.shoplist_b {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+}
+
+.shopsNav {
+        display: flex;
+        flex-direction: row;
+        max-width: 1000px; 
+        width: 100%;      
+}
+
+.supplier {
+    width: 100%;
+    display: flex ;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3%;
+}
+
+.supplier div {
+    font-size: clamp(20px,0.8vw,30px);
+    font-weight: 600;
+}
+
+.supplier img {
+    width: 12vw;
+    max-width: 144px;
+    border-radius: 50%;
+    border: 3px solid gray;
+}
+
+.shop-list-obj{
+    justify-content: start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 480px;
+}
+
+.shops-obj{
+    box-shadow: 0 0.3px  gray;
+}
+
+.shop-obj div{
+    font-size: clamp(12px, 1vw, 16px);
+    font-weight: 400;
+    width: 100%;
+}
+
+
+.Search-div {
+    padding: 5%;
+}
+
+.Search-bar {
+    background-color: #F5F5F5;
+    color: #858585;
+    font-size: clamp(8px,1vw,14px);
+    padding: 10px 5vw;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    max-width: 360px;
+}
+
+.Search-bar:hover {
+    transform: scale(1.1);
+}

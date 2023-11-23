@@ -1,21 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import './style.css';
 import React from "react";
+import NavCol from "./navCol/NavCol";
 
 const baseUrl = 'https://retaily.online/api/clientv8';
 
 const Menu = () => {
- 
-
+    
     const location = useLocation();
     const [token] = useState(location.state.token);
     const [suppliers, setSupplier] = useState ([]);
     const [tags, setTag] = useState ([]);
     const [menu,setMenu ] = useState (0);
 
-    const all = [0];
+   
 
     const navigate = useNavigate();
      
@@ -43,27 +43,41 @@ const Menu = () => {
             });
     }
     
+
+
+   
+     
     return (
+        <div className="Menu">
+            <NavCol/>
         <div className="Menu_b">
             <div className="navbar_b">
-            <div className="nav-menu">
-                {
-                    tags.map((tag : any)  =>  <span  key= {tag.code} onClick={() => setMenu(tag['code'])} className="li_obj">{tag['name']} {menu === tag['code']? <></>: <></> }</span> )
-                }
+                <div className="nav-menu">
+                    <span onClick={() => setMenu(0)} className="li_tag">Все</span>
+                    {
+                        tags.map((tag : any)  =>  <span  key= {tag.code} onClick={() => setMenu(tag['code'])} className="li_tag">{tag['name']} {menu === tag['code']? <></>: <></> }</span> )
+                    }
+                </div>
             </div>
-            </div>
-            <div className="menu-collections">
-                {
+                <div className="menu-collections">
+                {      
+                    menu === 0? 
+                    suppliers.map ((filteredSupplier : any) =>  <div onClick={() => {navigate (`/sapShops/${filteredSupplier.code} `, {state:{filteredSupplier, token}})}} key= {filteredSupplier['code']} className="menu-item">
+                    <img src={"https://retaily.online/api/repo/" + filteredSupplier['images'] + "_small"} alt={filteredSupplier['name']} onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src="https://placekitten.com/g/200/300";
+                    }} /> <span >{filteredSupplier['name']}</span></div>)  
+                    :
                     suppliers.filter((supplierTag : any)  => supplierTag.tags.includes(menu))
-                    .map ((filteredSupplier : any) =>  <div onClick={() => {navigate ('/item-list', {state:{token}})}} key= {filteredSupplier['code']} className="menu-item">
+                    .map ((filteredSupplier : any) =>  <div onClick={() => {navigate (`/sapShops/${filteredSupplier.code}`, {state:{suppliers, token}})}} key= {filteredSupplier['code']} className="menu-item">
                         <img src={"https://retaily.online/api/repo/" + filteredSupplier['images'] + "_small"} alt={filteredSupplier['name']} onError={({ currentTarget }) => {
                         currentTarget.onerror = null;
                         currentTarget.src="https://placekitten.com/g/200/300";
-                    }} /> <span >{filteredSupplier['name']}</span></div>)
+                    }} /> <span >{filteredSupplier['name']}</span></div>) 
                 }
             </div>
         </div>
-
+        </div>
         );
         
 }
