@@ -21,7 +21,7 @@ export function Login () {
             })
             .then((res: any) => {
                 let token = res.data.token
-                navigate ('/menu', {state:{token}});
+                navigate ('/sapplierList', {state:{token}});
             })
             .catch((err) => {
                 console.log(err)

@@ -1,8 +1,7 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import './style.css'
 import axios from "axios";
 import { useState,useEffect } from "react";
-import NavCol from "../navCol/NavCol";
 
 const baseUrl = 'https://retaily.online/api/clientv8';
 
@@ -67,7 +66,6 @@ const SapShops = (props: Props) => {
 
     return (
         <div className="shoplist">
-            <NavCol/>
             <div className="shoplist_b">
                 <div className="shopsNav">
                     {suppliers.filter((supplierCodeCheck : any)  => supplierCodeCheck.code === id['code'])
@@ -75,22 +73,22 @@ const SapShops = (props: Props) => {
                                 <img src={"https://retaily.online/api/repo/" + supplierCode['images'] + "_small"} alt={supplierCode['name']} onError={({ currentTarget }) => {
                                 currentTarget.onerror = null;
                                 currentTarget.src="https://placekitten.com/g/200/300";
-                            }} /> <div >{supplierCode['name']}</div></div>)
+                            }} />{supplierCode['name']}</div>)
                     }
                     
                 </div>
                 <div className="Search-div">
                     <input type="text" className='Search-bar' placeholder="Поиск" value={value} onChange={(e: any) => {setValue(e.target.value);}}/>
                 </div>
-            <div className="">
-                <div>{shops && shops.length > 0 ? 
-                <div className="shop-list-obj">
+            <div className="shoplist-list">
+                {shops && shops.length > 0 ? 
+                <div className="shoplist-obj">
                     {
-                    shops.filter((shopSearch : any)  => shopSearch.name.includes(value))
+                    shops.filter((shopSearch : any)  => shopSearch.name.includes(value) || shopSearch.inn.includes(value))
                         .map((shops : any) => {
                             return (
                                 <div className="shops-obj">
-                                    <div>{shops['name']}</div>
+                                    <div>{shops.name}</div>
                                     <div>ИНН: {shops.inn}</div>
                                 </div>
                             )
@@ -99,7 +97,6 @@ const SapShops = (props: Props) => {
                 </div>
                 : null}</div>
                 </div>
-            </div>
         </div>
     );
 }

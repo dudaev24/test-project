@@ -13,7 +13,7 @@
 }
 
 .navCol_list h1 {
-    font-size: clamp(16px, 0,8vw, 20px);
+    font-size: clamp(8px, 0,9vw, 18px);
     font-weight: 700;
     margin: 2vh
 

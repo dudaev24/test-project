@@ -1,54 +1,48 @@
-.shoplist {
-    display: flex;
-    flex-direction: row;
-}
 
 .shoplist_b {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1400px;
+    justify-content: center;
+    padding-left: 5%;
+    
 }
 
 .shopsNav {
         display: flex;
         flex-direction: row;
-        max-width: 1000px; 
-        width: 100%;      
+        max-width: 1400px;  
+            
 }
 
 .supplier {
-    width: 100%;
     display: flex ;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     column-gap: 3%;
-}
-
-.supplier div {
-    font-size: clamp(20px,0.8vw,30px);
+    font-size: clamp(20px,0.8vw,50px);
     font-weight: 600;
 }
 
+
 .supplier img {
     width: 12vw;
-    max-width: 144px;
+    max-width: 200px;
     border-radius: 50%;
     border: 3px solid gray;
 }
 
-.shop-list-obj{
+.shoplist-obj{
     justify-content: start;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    min-width: 480px;
 }
 
 .shops-obj{
     box-shadow: 0 0.3px  gray;
+    margin: 1%;
 }
 
 .shop-obj div{
@@ -59,22 +53,34 @@
 
 
 .Search-div {
-    padding: 5%;
+    padding: 3vh;
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 5vh;
 }
 
 .Search-bar {
     background-color: #F5F5F5;
     color: #858585;
     font-size: clamp(8px,1vw,14px);
-    padding: 10px 5vw;
+    padding: 10px;
     border: 1px solid transparent;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
     width: 100%;
-    max-width: 360px;
+    
 }
 
 .Search-bar:hover {
-    transform: scale(1.1);
+    transform: scale(1.01);
+}
+
+.shoplist-list {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
