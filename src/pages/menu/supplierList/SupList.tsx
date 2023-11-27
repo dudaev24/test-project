@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import './style.css';
-import React from "react";
 
 const baseUrl = 'https://retaily.online/api/clientv8';
 
@@ -66,7 +65,7 @@ const SupList = () => {
                     }} /> <div >{filteredSupplier['name']}</div></div>)  
                     :
                     suppliers.filter((supplierTag : any)  => supplierTag.tags.includes(menu))
-                    .map ((filteredSupplier : any) =>  <div onClick={() => {navigate (`/sapShops/${filteredSupplier.code}`, {state:{suppliers, token}})}} key= {filteredSupplier['code']} className="menu-item">
+                    .map ((filteredSupplier : any) =>  <div onClick={() => {navigate (`/sapShops/${filteredSupplier.code}`, {state:{token}})}} key= {filteredSupplier['code']} className="menu-item">
                         <img src={"https://retaily.online/api/repo/" + filteredSupplier['images'] + "_small"} alt={filteredSupplier['name']} onError={({ currentTarget }) => {
                         currentTarget.onerror = null;
                         currentTarget.src="https://placekitten.com/g/200/300";

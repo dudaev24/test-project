@@ -15,29 +15,49 @@ const SapShops = (props: Props) => {
     const location = useLocation();
     const [token] = useState(location.state.token);
     const [supplier] = useState(id['code']);
+    const [shop] = useState(id['shop']);
     const [suppliers, setSuppliers] = useState ([]);
     const [value, setValue] = useState([]);
     const [products, setProducts] = useState([]);
-    const [categories, setCategories] = useState([])
-
-    useEffect(() => {
-        getProducts()
-    }, [])
+    const [categories, setCategories]  = useState<any>([])
+    const [selected, setFcat] = useState<any>([]) 
 
     useEffect(() => {
         getSuppliers()
-    }, [])
-
-    useEffect(() => {
         getCategories()
-    }, [])
+    },[])
 
 
-
-    const getProducts = async() => {
+    const getCategories = async() => {
         axios
             .post(`${baseUrl}`, {
-                cmd: "getStories", supplier,
+                cmd: "getcategories", supplier, shop
+            },
+            {
+            headers: {
+                Authorization: 'Bearer ' + token}
+            })
+            .then((res) => {
+                let categories: any = res.data;
+                setCategories (categories)
+                setFcat (categories[0].code)
+                getProducts(categories[0].code)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+            ;
+    }
+
+   
+
+    const getProducts = async(code_category: string) => {
+        await axios
+            .post(`${baseUrl}`, {
+                cmd: "getProducts", 
+                supplier: supplier, 
+                shop: shop, 
+                category: code_category
             },
             {headers: {
                 Authorization: 'Bearer ' + token}
@@ -69,54 +89,19 @@ const SapShops = (props: Props) => {
             });
     }
 
-    const getCategories = async() => {
-        axios
-            .post(`${baseUrl}`, {
-                cmd: "getcategories", supplier
-            },
-            {
-            headers: {
-                Authorization: 'Bearer ' + token}
-            })
-            .then((res) => {
-                let categories: any = res.data.suppliers;
-                setSuppliers (categories)
-            })
-            .catch((err) => {
-                console.log(err)
-            });
-    }
+    
 
     return (
             <div className="itemlist_b">
-                <div className="shopsNav">
-                    {suppliers.filter((supplierCodeCheck : any)  => supplierCodeCheck.code === id['code'])
-                            .map ((supplierCode : any) =>  <div key= {supplierCode['code']} className="supplier">
-                                <img src={"https://retaily.online/api/repo/" + supplierCode['images'] + "_small"} alt={supplierCode['name']} onError={({ currentTarget }) => {
-                                currentTarget.onerror = null;
-                                currentTarget.src="https://placekitten.com/g/200/300";
-                            }} />{supplierCode['name']}</div>)
-                    }
-                    
-                </div>
-
-            <div className="shoplist-list">
-                {products && products.length > 0 ? 
-                <div className="shoplist-obj">
-                    {
-                    products.filter((shopSearch : any)  => shopSearch.name.includes(value) || shopSearch.inn.includes(value))
-                        .map((shops : any) => {
-                            return (
-                                <div className="shops-obj">
-                                    <div>{shops.name}</div>
-                                    <div>ИНН: {shops.inn}</div>
-                                </div>
-                            )
-                        }
-                     )}
-                </div>
-                : null}</div>
-                </div>
+                <div className="menu-collections">
+                    {products && products.length > 0 ? 
+                        products.map ((filteredProducts : any) =>  <div key= {filteredProducts['code']} className="menu-item">
+                        <img src={"https://retaily.online/api/repo/" + filteredProducts['images'] + "_small"} alt={filteredProducts['name']} onError={({ currentTarget }) => {
+                        currentTarget.onerror = null;
+                        currentTarget.src="https://placekitten.com/g/200/300";
+                        }} /> <div >{filteredProducts['name']}</div></div>)  
+                    : null}</div>
+                    </div>
     );
 }
 

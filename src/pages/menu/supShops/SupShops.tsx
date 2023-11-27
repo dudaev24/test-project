@@ -1,15 +1,21 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate  } from "react-router-dom";
 import './style.css'
 import axios from "axios";
 import { useState,useEffect } from "react";
 
 const baseUrl = 'https://retaily.online/api/clientv8';
 
+
+
 type Props = {
     
 }
 
-const SapShops = (props: Props) => {
+
+const SupShops = (props: Props) => {
+
+    const navigate = useNavigate();
+
     const id = useParams ();
 
     const location = useLocation();
@@ -65,7 +71,6 @@ const SapShops = (props: Props) => {
     }
 
     return (
-        <div className="shoplist">
             <div className="shoplist_b">
                 <div className="shopsNav">
                     {suppliers.filter((supplierCodeCheck : any)  => supplierCodeCheck.code === id['code'])
@@ -87,7 +92,7 @@ const SapShops = (props: Props) => {
                     shops.filter((shopSearch : any)  => shopSearch.name.includes(value) || shopSearch.inn.includes(value))
                         .map((shops : any) => {
                             return (
-                                <div className="shops-obj">
+                                <div className="shops-obj" onClick={() => {navigate (`/lavka/${supplier}/${shops.code}`, {state:{token}})}}>
                                     <div>{shops.name}</div>
                                     <div>ИНН: {shops.inn}</div>
                                 </div>
@@ -97,8 +102,7 @@ const SapShops = (props: Props) => {
                 </div>
                 : null}</div>
                 </div>
-        </div>
     );
 }
 
-export default SapShops;
+export default SupShops;

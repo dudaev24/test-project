@@ -2,10 +2,11 @@
 import Home from './pages/home/Home';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { Login } from './pages/login/Login';
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import SupShops from './pages/menu/supShops/SupShops';
 import SupList from './pages/menu//supplierList/SupList';
 import NavCol from './pages/menu/navCol/NavCol';
+import SapShops from './pages/menu/itemList/Item-list';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             <Routes>
               <Route path='/sapplierList' element={<SupList/>} />
               <Route path='/sapShops/:code' element={<SupShops/>} />
+              <Route path='/lavka/:code/:shop' element={<SapShops/>}/>
             </Routes>
           </div>
         {/* } */}
